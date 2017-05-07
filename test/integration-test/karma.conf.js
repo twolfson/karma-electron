@@ -1,11 +1,14 @@
 // Karma configuration
 // Generated on Thu Mar 03 2016 19:57:50 GMT-0600 (CST)
 var Set = require('collections/set');
+var path = require('path');
+
 module.exports = function (config) {
   // Set up default files to test against
   var karmaTest = 'karma-test.js';
   var successTest = 'success-test.js';
   var phantomJsTest = 'phantomjs-test.js';
+  var mainEntryFileTest = 'main-entry-file-test.js';
   var eofCommentTest = 'eof-comment-test.js';
   var failureTest = 'failure-test.js';
   var sourceMapTest = 'source-map-test.js';
@@ -18,7 +21,8 @@ module.exports = function (config) {
   var testFiles = ['*-test.js'];
   var excludeFiles = new Set([
     customContextFileTest, failureTest, filenameOverrideTest, karmaTest,
-    nodeRequireTest, phantomJsTest, sourceMapTest, uncaughtExceptionTest]);
+    nodeRequireTest, phantomJsTest, sourceMapTest, uncaughtExceptionTest,
+    mainEntryFileTest]);
 
   // If we are testing uncaught exceptions, then update our tests
   if (process.env.TEST_TYPE === 'UNCAUGHT_EXCEPTION') {
@@ -45,6 +49,9 @@ module.exports = function (config) {
   } else if (process.env.TEST_TYPE === 'FILENAME_OVERRIDE') {
     testFiles = [filenameOverrideTest];
     excludeFiles.delete(filenameOverrideTest);
+  } else if (process.env.TEST_TYPE === 'MAIN_ENTRY_FILE') {
+    testFiles = [mainEntryFileTest];
+    excludeFiles.delete(mainEntryFileTest);
   } else if (process.env.TEST_TYPE === 'NODE_REQUIRE') {
     testFiles = [nodeCommonTest, nodeRequireTest];
     excludeFiles.add(nodeScriptSrcTest);
@@ -63,7 +70,12 @@ module.exports = function (config) {
       __dirname + '/test-files/custom-context.html' : null,
     customDebugFile: process.env.TEST_TYPE === 'CUSTOM_CONTEXT_FILE' ?
       __dirname + '/test-files/custom-debug.html' : null,
-
+    customLaunchers: {
+      ElectronWithEntry: {
+        base: 'Electron',
+        entry: path.resolve(__dirname, 'test-files/main-entry.js')
+      }
+    },
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['mocha'],

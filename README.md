@@ -90,9 +90,6 @@ We support the following configurations:
     - loadScriptsViaRequire `Boolean` - Load scripts via `require` instead of `<script src=`
         - This sets `__filename`, `__dirname`, and `module` to match the script instead of Karma's `context.html`
         - By default, this is `false` and we directly load the original scripts content
-    - __injectionVariable: `String` - Internal implementation detail; this is a variable that will be exposed on `window` when running in bi-directional
-    mode which will prevent Karma from re-evaluating the injection script on
-    each run. Defaults to `__ELECTRON_INJECTED__`.
 
 **Example:**
 
@@ -125,11 +122,6 @@ We support configuration via Karma's custom launcher inheritance:
 - entry `String` - Path to a main electron process file to require once the app
   has been initialized. This script will be evaluated in the main process
   context which will enable you to perform bi-directional testing.
-- browserWindowOptions `Object` - Map of additional options to pass to the
-  [BrowserWindow](http://electron.atom.io/docs/api/browser-window/#new-
-  browserwindowoptions) constructor.
-- devTools `Boolean` - Launch the DevTools panel automatically for every
-  BrowserWindow instance that gets launched during the test.
 
 **Example:**
 
@@ -144,13 +136,7 @@ module.exports = function (config) {
       CustomElectron: {
         base: 'Electron',
         userDataDir: __dirname + '/.electron',
-        flags: ['--show'],
-        devTools: true,
-        browserWindowOptions: {
-          webPreferences: {
-            webSecurity: false,
-          }
-        }
+        flags: ['--show']
       }
     }
   });
