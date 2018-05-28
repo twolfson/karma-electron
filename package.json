@@ -1,47 +1,37 @@
 {
-  "name": "karma-electron",
-  "description": "Karma launcher and preprocessor for Electron",
-  "version": "6.0.0",
-  "homepage": "https://github.com/twolfson/karma-electron",
+  "_from": "karma-electron",
+  "_id": "karma-electron@6.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-yCTdpG9J9/x0S2ubYOZBOXmUc2I=",
+  "_location": "/karma-electron",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "karma-electron",
+    "name": "karma-electron",
+    "escapedName": "karma-electron",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/karma-electron/-/karma-electron-6.0.0.tgz",
+  "_shasum": "c824dda46f49f7fc744b6b9b60e6413979947362",
+  "_spec": "karma-electron",
+  "_where": "X:\\js\\webim",
   "author": {
     "name": "Todd Wolfson",
     "email": "todd@twolfson.com",
     "url": "http://twolfson.com/"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/twolfson/karma-electron.git"
-  },
   "bugs": {
     "url": "https://github.com/twolfson/karma-electron/issues"
   },
-  "main": "lib/index",
-  "engines": {
-    "node": ">= 4.0.0"
-  },
-  "license": "Unlicense",
-  "scripts": {
-    "precheck": "twolfson-style precheck lib/ test/",
-    "lint": "twolfson-style lint lib/ test/",
-    "start-reference": "electron test/reference",
-    "test": "npm run test-karma-all && npm run lint",
-    "test-karma-all": "npm run test-karma-single-run && npm run test-karma-failure && npm run test-karma-uncaught-exception && npm run test-karma-karma && npm run test-karma-phantomjs && npm run test-karma-eof-comment && npm run test-karma-source-map && npm run test-karma-node-require && npm run test-karma-custom-context-file && npm run test-karma-filename-override && npm run test-karma-main-require",
-    "test-karma-continuous": "karma start test/integration-test/karma.conf.js --no-single-run",
-    "test-karma-custom-context-file-comment": "# DEV: We need to manually test custom debug file support since it's designed for debugging, not testing",
-    "test-karma-custom-context-file": "cross-env TEST_TYPE=CUSTOM_CONTEXT_FILE karma start test/integration-test/karma.conf.js --single-run",
-    "test-karma-eof-comment": "cross-env TEST_TYPE=EOF_COMMENT karma start test/integration-test/karma.conf.js --single-run",
-    "test-karma-filename-override": "cross-env TEST_TYPE=FILENAME_OVERRIDE karma start test/integration-test/karma.conf.js --single-run",
-    "test-karma-failure": "node bin/verify-failure.js TEST_TYPE=FAILURE karma start test/integration-test/karma.conf.js --single-run",
-    "test-karma-karma-comment": "# DEV: We run `test-karma-karma` twice to verify no user-data-dir is leaking",
-    "test-karma-karma": "cross-env TEST_TYPE=KARMA karma start test/integration-test/karma.conf.js --single-run && cross-env TEST_TYPE=KARMA karma start test/integration-test/karma.conf.js --single-run",
-    "test-karma-main-require": "cross-env TEST_TYPE=MAIN_REQUIRE karma start test/integration-test/karma.conf.js --single-run --browsers ElectronMainRequire",
-    "test-karma-node-require": "cross-env TEST_TYPE=NODE_REQUIRE karma start test/integration-test/karma.conf.js --single-run",
-    "test-karma-phantomjs": "cross-env TEST_TYPE=PHANTOMJS karma start test/integration-test/karma.conf.js --single-run --browsers PhantomJS",
-    "test-karma-single-run": "karma start test/integration-test/karma.conf.js --single-run",
-    "test-karma-source-map": "cross-env TEST_TYPE=SOURCE_MAP karma start test/integration-test/karma.conf.js --single-run",
-    "test-karma-uncaught-exception": "node bin/verify-failure.js TEST_TYPE=UNCAUGHT_EXCEPTION karma start test/integration-test/karma.conf.js --single-run",
-    "test-windows": "npm run test-karma-all"
-  },
+  "bundleDependencies": false,
   "dependencies": {
     "combine-source-map": "~0.8.0",
     "commander": "~2.9.0",
@@ -50,6 +40,8 @@
     "minstache": "~1.2.0",
     "xtend": "~4.0.1"
   },
+  "deprecated": false,
+  "description": "Karma launcher and preprocessor for Electron",
   "devDependencies": {
     "collections": "~3.0.0",
     "cross-env": "~1.0.7",
@@ -67,16 +59,50 @@
     "request": "~2.72.0",
     "twolfson-style": "~1.6.0"
   },
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "foundry": {
+    "releaseCommands": [
+      "foundry-release-git",
+      "foundry-release-npm"
+    ]
+  },
+  "homepage": "https://github.com/twolfson/karma-electron",
   "keywords": [
     "karma-plugin",
     "karma-launcher",
     "karma-preprocessor",
     "electron"
   ],
-  "foundry": {
-    "releaseCommands": [
-      "foundry-release-git",
-      "foundry-release-npm"
-    ]
-  }
+  "license": "Unlicense",
+  "main": "lib/index",
+  "name": "karma-electron",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/twolfson/karma-electron.git"
+  },
+  "scripts": {
+    "lint": "twolfson-style lint lib/ test/",
+    "precheck": "twolfson-style precheck lib/ test/",
+    "start-reference": "electron test/reference",
+    "test": "npm run test-karma-all && npm run lint",
+    "test-karma-all": "npm run test-karma-single-run && npm run test-karma-failure && npm run test-karma-uncaught-exception && npm run test-karma-karma && npm run test-karma-phantomjs && npm run test-karma-eof-comment && npm run test-karma-source-map && npm run test-karma-node-require && npm run test-karma-custom-context-file && npm run test-karma-filename-override && npm run test-karma-main-require",
+    "test-karma-continuous": "karma start test/integration-test/karma.conf.js --no-single-run",
+    "test-karma-custom-context-file": "cross-env TEST_TYPE=CUSTOM_CONTEXT_FILE karma start test/integration-test/karma.conf.js --single-run",
+    "test-karma-custom-context-file-comment": "# DEV: We need to manually test custom debug file support since it's designed for debugging, not testing",
+    "test-karma-eof-comment": "cross-env TEST_TYPE=EOF_COMMENT karma start test/integration-test/karma.conf.js --single-run",
+    "test-karma-failure": "node bin/verify-failure.js TEST_TYPE=FAILURE karma start test/integration-test/karma.conf.js --single-run",
+    "test-karma-filename-override": "cross-env TEST_TYPE=FILENAME_OVERRIDE karma start test/integration-test/karma.conf.js --single-run",
+    "test-karma-karma": "cross-env TEST_TYPE=KARMA karma start test/integration-test/karma.conf.js --single-run && cross-env TEST_TYPE=KARMA karma start test/integration-test/karma.conf.js --single-run",
+    "test-karma-karma-comment": "# DEV: We run `test-karma-karma` twice to verify no user-data-dir is leaking",
+    "test-karma-main-require": "cross-env TEST_TYPE=MAIN_REQUIRE karma start test/integration-test/karma.conf.js --single-run --browsers ElectronMainRequire",
+    "test-karma-node-require": "cross-env TEST_TYPE=NODE_REQUIRE karma start test/integration-test/karma.conf.js --single-run",
+    "test-karma-phantomjs": "cross-env TEST_TYPE=PHANTOMJS karma start test/integration-test/karma.conf.js --single-run --browsers PhantomJS",
+    "test-karma-single-run": "karma start test/integration-test/karma.conf.js --single-run",
+    "test-karma-source-map": "cross-env TEST_TYPE=SOURCE_MAP karma start test/integration-test/karma.conf.js --single-run",
+    "test-karma-uncaught-exception": "node bin/verify-failure.js TEST_TYPE=UNCAUGHT_EXCEPTION karma start test/integration-test/karma.conf.js --single-run",
+    "test-windows": "npm run test-karma-all"
+  },
+  "version": "6.0.0"
 }
