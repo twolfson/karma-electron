@@ -1,4 +1,6 @@
 # karma-electron changelog
+6.1.0 - Added `--default-user-agent` via @makarandp0 in #39
+
 6.0.0 - Updated source map support to pass through original source map fully
 
 5.3.0 - Upgraded to electron@1.8.4 to fix GitHub vulnerability warning
