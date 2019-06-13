@@ -7,50 +7,49 @@ process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
 
 module.exports = function (config) {
   // Set up default files to test against
-  var karmaTest = 'karma-test.js';
-  var successTest = 'success-test.js';
-  var phantomJsTest = 'phantomjs-test.js';
+  var customContextFileTest = 'custom-context-file-test.js';
   var eofCommentTest = 'eof-comment-test.js';
   var failureTest = 'failure-test.js';
-  var sourceMapTest = 'source-map-test.js';
-  var uncaughtExceptionTest = 'uncaught-exception-test.js';
+  var filenameOverrideTest = 'filename-override-test.js';
+  var karmaTest = 'karma-test.js';
   var mainRequireTest = 'main-require-test.js';
   var nodeCommonTest = 'node-common-test.js';
   var nodeRequireTest = 'node-require-test.js';
   var nodeScriptSrcTest = 'node-script-src-test.js';
-  var customContextFileTest = 'custom-context-file-test.js';
-  var filenameOverrideTest = 'filename-override-test.js';
-  var testFiles = ['*-test.js'];
+  var phantomJsTest = 'phantomjs-test.js';
+  var sourceMapTest = 'source-map-test.js';
+  var successTest = 'success-test.js';
+  var uncaughtExceptionTest = 'uncaught-exception-test.js';
+
+  var testFiles;
   var excludeFiles = new Set([
-    customContextFileTest, failureTest, filenameOverrideTest, karmaTest,
-    nodeRequireTest, phantomJsTest, sourceMapTest, uncaughtExceptionTest,
-    mainRequireTest]);
+    customContextFileTest,
+    failureTest,
+    filenameOverrideTest,
+    karmaTest,
+    mainRequireTest,
+    nodeRequireTest,
+    phantomJsTest,
+    sourceMapTest,
+    uncaughtExceptionTest
+  ]);
 
   // If we are testing uncaught exceptions, then update our tests
-  if (process.env.TEST_TYPE === 'UNCAUGHT_EXCEPTION') {
-    testFiles = [uncaughtExceptionTest];
-    excludeFiles.delete(uncaughtExceptionTest);
+  if (process.env.TEST_TYPE === 'CUSTOM_CONTEXT_FILE') {
+    testFiles = [customContextFileTest];
+    excludeFiles.delete(customContextFileTest);
   } else if (process.env.TEST_TYPE === 'EOF_COMMENT') {
     testFiles = [eofCommentTest];
     excludeFiles.delete(eofCommentTest);
   } else if (process.env.TEST_TYPE === 'FAILURE') {
     testFiles = [failureTest];
     excludeFiles.delete(failureTest);
-  } else if (process.env.TEST_TYPE === 'KARMA') {
-    testFiles = [karmaTest];
-    excludeFiles.delete(karmaTest);
-  } else if (process.env.TEST_TYPE === 'PHANTOMJS') {
-    testFiles = [successTest, phantomJsTest];
-    excludeFiles = new Set();
-  } else if (process.env.TEST_TYPE === 'SOURCE_MAP') {
-    testFiles = [sourceMapTest];
-    excludeFiles.delete(sourceMapTest);
-  } else if (process.env.TEST_TYPE === 'CUSTOM_CONTEXT_FILE') {
-    testFiles = [customContextFileTest];
-    excludeFiles.delete(customContextFileTest);
   } else if (process.env.TEST_TYPE === 'FILENAME_OVERRIDE') {
     testFiles = [filenameOverrideTest];
     excludeFiles.delete(filenameOverrideTest);
+  } else if (process.env.TEST_TYPE === 'KARMA') {
+    testFiles = [karmaTest];
+    excludeFiles.delete(karmaTest);
   } else if (process.env.TEST_TYPE === 'MAIN_REQUIRE') {
     testFiles = [mainRequireTest];
     excludeFiles.delete(mainRequireTest);
@@ -58,6 +57,15 @@ module.exports = function (config) {
     testFiles = [nodeCommonTest, nodeRequireTest];
     excludeFiles.add(nodeScriptSrcTest);
     excludeFiles.delete(nodeRequireTest);
+  } else if (process.env.TEST_TYPE === 'PHANTOMJS') {
+    testFiles = [successTest, phantomJsTest];
+    excludeFiles = new Set();
+  } else if (process.env.TEST_TYPE === 'SOURCE_MAP') {
+    testFiles = [sourceMapTest];
+    excludeFiles.delete(sourceMapTest);
+  } else if (process.env.TEST_TYPE === 'UNCAUGHT_EXCEPTION') {
+    testFiles = [uncaughtExceptionTest];
+    excludeFiles.delete(uncaughtExceptionTest);
   } else if (process.env.TEST_TYPE) {
     throw new Error('Unrecognized test type "' + process.env.TEST_TYPE + '"');
   }
