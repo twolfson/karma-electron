@@ -21,7 +21,7 @@ module.exports = function (config) {
   var successTest = 'success-test.js';
   var uncaughtExceptionTest = 'uncaught-exception-test.js';
 
-  var testFiles;
+  var testFiles = ['*-test.js'];
   var excludeFiles = new Set([
     customContextFileTest,
     failureTest,
@@ -69,6 +69,7 @@ module.exports = function (config) {
   } else if (process.env.TEST_TYPE === 'UNCAUGHT_EXCEPTION') {
     testFiles = [uncaughtExceptionTest];
     excludeFiles.delete(uncaughtExceptionTest);
+  // DEV: Note that we do have scenarios where there is no `TEST_TYPE` specified at all
   } else if (process.env.TEST_TYPE) {
     throw new Error('Unrecognized test type "' + process.env.TEST_TYPE + '"');
   }
