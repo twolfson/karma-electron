@@ -1,4 +1,6 @@
 # karma-electron changelog
+6.2.0 - Added `browserWindowOptions` and `loadURLOptions` support for Electron@5. Fixes #38
+
 6.1.1 - Updated support to Node.js >= 8 to fix Travis CI
 
 6.1.0 - Added `--default-user-agent` via @makarandp0 in #39
