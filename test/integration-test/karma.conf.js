@@ -70,12 +70,21 @@ module.exports = function (config) {
     customDebugFile: process.env.TEST_TYPE === 'CUSTOM_CONTEXT_FILE' ?
       __dirname + '/test-files/custom-debug.html' : null,
     customLaunchers: {
-      ElectronMainRequire: {
+      // TODO: Update some tests to not use `WithNodeIntegration`
+      ElectronWithNodeIntegration: {
         base: 'Electron',
+        browserWindowOptions: {
+          webPreferences: {
+            nodeIntegration: true
+          }
+        }
+      },
+      ElectronMainRequire: {
+        base: 'ElectronWithNodeIntegration',
         require: __dirname + '/test-files/main-require.js'
       },
       VisibleElectron: {
-        base: 'Electron',
+        base: 'ElectronWithNodeIntegration',
         flags: ['--show']
       }
     },
@@ -125,7 +134,7 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Electron'],
+    browsers: ['ElectronWithNodeIntegration'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
