@@ -2,6 +2,9 @@
 // Generated on Thu Mar 03 2016 19:57:50 GMT-0600 (CST)
 var Set = require('collections/set');
 
+// Disable security warnings
+process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
+
 module.exports = function (config) {
   // Set up default files to test against
   var karmaTest = 'karma-test.js';
