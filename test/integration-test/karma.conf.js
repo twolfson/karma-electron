@@ -83,11 +83,21 @@ module.exports = function (config) {
         }
       },
       ElectronMainRequire: {
-        base: 'ElectronWithNodeIntegration',
+        base: 'Electron',
+        browserWindowOptions: {
+          webPreferences: {
+            nodeIntegration: true
+          }
+        },
         require: __dirname + '/test-files/main-require.js'
       },
       VisibleElectron: {
-        base: 'ElectronWithNodeIntegration',
+        base: 'Electron',
+        browserWindowOptions: {
+          webPreferences: {
+            nodeIntegration: true
+          }
+        },
         flags: ['--show']
       }
     },
