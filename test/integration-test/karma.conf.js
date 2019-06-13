@@ -53,6 +53,9 @@ module.exports = function (config) {
   } else if (process.env.TEST_TYPE === 'MAIN_REQUIRE') {
     testFiles = [mainRequireTest];
     excludeFiles.delete(mainRequireTest);
+  } else if (process.env.TEST_TYPE === 'NO_NODE_INTEGRATION') {
+    testFiles = [successTest, phantomJsTest];
+    excludeFiles = new Set();
   } else if (process.env.TEST_TYPE === 'NODE_REQUIRE') {
     testFiles = [nodeCommonTest, nodeRequireTest];
     excludeFiles.add(nodeScriptSrcTest);
@@ -81,7 +84,6 @@ module.exports = function (config) {
     customDebugFile: process.env.TEST_TYPE === 'CUSTOM_CONTEXT_FILE' ?
       __dirname + '/test-files/custom-debug.html' : null,
     customLaunchers: {
-      // TODO: Update some tests to not use `WithNodeIntegration`
       ElectronWithNodeIntegration: {
         base: 'Electron',
         browserWindowOptions: {
