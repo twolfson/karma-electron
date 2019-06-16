@@ -137,7 +137,7 @@ module.exports = function (config) {
       CustomElectron: {
         base: 'Electron',
         userDataDir: __dirname + '/.electron',
-        browswerWindowOptions: {
+        browserWindowOptions: {
           show: true
         },
         require: __dirname + '/main-fixtures.js'
@@ -161,7 +161,7 @@ module.exports = function (config) {
     customLaunchers: {
       CustomElectron: {
         base: 'Electron',
-        browswerWindowOptions: {
+        browserWindowOptions: {
           webPreferences: {
             preload: __dirname + '/path/to/preload.js'
           }
@@ -185,7 +185,7 @@ module.exports = function (config) {
     customLaunchers: {
       CustomElectron: {
         base: 'Electron',
-        browswerWindowOptions: {
+        browserWindowOptions: {
           webPreferences: {
             nodeIntegration: true
           }
