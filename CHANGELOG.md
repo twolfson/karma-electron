@@ -1,4 +1,6 @@
 # karma-electron changelog
+6.2.1 - Corrected README typos via @popod in #42
+
 6.2.0 - Added `browserWindowOptions` and `loadURLOptions` support for Electron@5. Fixes #38
 
 6.1.1 - Updated support to Node.js >= 8 to fix Travis CI
