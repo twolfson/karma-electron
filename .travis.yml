@@ -1,20 +1,16 @@
-sudo: false
+dist: xenial
 language: node_js
 node_js:
   - "12"
   - "10"
   - "8"
+services:
+  # https://docs.travis-ci.com/user/gui-and-headless-browsers/#using-services
+  # https://benlimmer.com/2019/01/14/travis-ci-xvfb/
+  - xvfb
 
 before_install:
   - curl --location http://rawgit.com/twolfson/fix-travis-ci/master/lib/install.sh | bash -s
-
-before_script:
-  # Generate a virtual framebuffer X server to collect Electron windows
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-
-  # Wait for Xvfb to start
-  - sleep 3
 
 notifications:
   email:
