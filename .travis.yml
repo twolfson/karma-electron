@@ -4,10 +4,17 @@ node_js:
   - "12"
   - "10"
   - "8"
+
 services:
   # https://docs.travis-ci.com/user/gui-and-headless-browsers/#using-services
   # https://benlimmer.com/2019/01/14/travis-ci-xvfb/
   - xvfb
+addons:
+  apt:
+    packages:
+      # Fix libgconf-2.so.4 errors
+      # https://github.com/cypress-io/cypress/issues/4069#issuecomment-488315675
+      - libgconf-2-4
 
 before_install:
   - curl --location http://rawgit.com/twolfson/fix-travis-ci/master/lib/install.sh | bash -s
