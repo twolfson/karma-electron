@@ -6,7 +6,9 @@ var Set = require('collections/set');
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
 
 // Fix Electron's location for Windows
-process.chdir(__dirname + '/../..');
+//   https://github.com/electron/windows-installer/issues/124
+// DEV: This will resolve to closest `../package.json`
+process.chdir(__dirname);
 
 module.exports = function (config) {
   // Set up default files to test against
