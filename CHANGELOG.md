@@ -1,4 +1,6 @@
 # karma-electron changelog
+6.3.0 - Fixed Windows support via removing `process.stdin` usage and encoding URLs
+
 6.2.2 - Fixed Travis CI settings
 
 6.2.1 - Corrected README typos via @popod in #42
