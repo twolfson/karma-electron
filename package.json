@@ -49,7 +49,6 @@
     "convert-source-map": "~1.2.0",
     "js-string-escape": "~1.0.0",
     "minstache": "~1.2.0",
-    "tmp": "~0.1.0",
     "xtend": "~4.0.1"
   },
   "devDependencies": {
