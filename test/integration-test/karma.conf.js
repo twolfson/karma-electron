@@ -8,7 +8,7 @@ process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
 // Fix Electron's location for Windows
 //   https://github.com/electron/windows-installer/issues/124
 // DEV: This will resolve to closest `../package.json`
-process.chdir(__dirname);
+process.chdir(__dirname + '/../..');
 
 module.exports = function (config) {
   // Set up default files to test against
