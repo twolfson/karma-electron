@@ -105,11 +105,11 @@ module.exports = function (config) {
       VisibleElectron: {
         base: 'Electron',
         browserWindowOptions: {
+          show: true,
           webPreferences: {
             nodeIntegration: true
           }
-        },
-        flags: ['--show']
+        }
       }
     },
     // frameworks to use
