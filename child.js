@@ -11,9 +11,6 @@ app.on('window-all-closed', function handleWindowsClosed () {
 
 app.setPath('userData', __dirname + '/tmp');
 
-      // fs.readFile(program.extendedOptions, 'utf8', function handleReadFile (err, extendedOptionsStr) {
-
-
 app.on('ready', function handleReady () {
   var browserWindow = new BrowserWindow();
   browserWindow.loadURL('https://google.com/');
