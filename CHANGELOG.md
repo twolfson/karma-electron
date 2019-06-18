@@ -1,4 +1,6 @@
 # karma-electron changelog
+6.2.2 - Fixed Travis CI settings
+
 6.2.1 - Corrected README typos via @popod in #42
 
 6.2.0 - Added `browserWindowOptions` and `loadURLOptions` support for Electron@5. Fixes #38
