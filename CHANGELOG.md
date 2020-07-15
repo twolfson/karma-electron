@@ -1,4 +1,6 @@
 # karma-electron changelog
+6.3.1 - Upgraded to Electron@9 in `devDependencies` as part of sanity while fixing #47
+
 6.3.0 - Fixed Windows support via removing `process.stdin` usage and encoding URLs
 
 6.2.2 - Fixed Travis CI settings
