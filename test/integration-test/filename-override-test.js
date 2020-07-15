@@ -17,7 +17,7 @@ describe('A karma configuration using a __filenameOverride file', function () {
     assert(/integration-test[\/\\]test-files[\/\\]filename-override-context\.html$/.test(module.filename),
       'Expected "' + module.filename + '" to end with ' +
       '"integration-test/test-files/filename-override-context.html"');
-    // assert.strictEqual(module.id, '.');
+    assert.strictEqual(module.id, 'electron/js2c/renderer_init');
   });
 
   it('doesn\'t load the file at all', function () {

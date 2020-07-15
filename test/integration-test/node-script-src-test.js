@@ -27,9 +27,9 @@ describe('module for `<script src=` based Node.js integrations', function () {
       assert(/karma[\/\\]static[\/\\]context\.html$/.test(module.filename),
         'Expected "' + module.filename + '" to end with "karma/static/context.html"');
       assert.strictEqual(typeof module.exports, 'object');
-      // assert.strictEqual(module.id, '.');
+      assert.strictEqual(module.id, 'electron/js2c/renderer_init');
       assert.strictEqual(submodule.loaded, true);
-      // assert.strictEqual(module.parent, null);
+      assert.strictEqual(module.parent, undefined);
     });
   });
 
