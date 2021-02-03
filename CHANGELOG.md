@@ -1,4 +1,6 @@
 # karma-electron changelog
+6.3.3 - Adjusted Travis CI Node.js versions
+
 6.3.2 - Upgraded to Electron@1 in `devDependencies` to resolve GitHub vulnerability warning
 
 6.3.1 - Upgraded to Electron@9 in `devDependencies` as part of sanity while fixing #47
