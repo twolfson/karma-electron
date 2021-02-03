@@ -1,9 +1,8 @@
 dist: xenial
 language: node_js
 node_js:
+  - "14"
   - "12"
-  - "10"
-  - "8"
 
 services:
   # https://docs.travis-ci.com/user/gui-and-headless-browsers/#using-services
