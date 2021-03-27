@@ -26,6 +26,13 @@ This was written to allow for directly testing in [Electron][] where we might wa
     - For testing a full application, see `electron's` documentation on Selenium and WebDriver
     - https://github.com/electron/electron/blob/v1.3.6/docs/tutorial/using-selenium-and-webdriver.md
 
+## Breaking changes with Electron@12
+`contextIsolation` has been set to `true` by default, which limits interaction with `require` and `postMessage`
+
+To resolve these issues, please see the latest [Getting Started](##getting-started) instructions
+
+For more information, see https://github.com/twolfson/karma-electron/issues/50
+
 ## Breaking changes in 5.0.0
 We have corrected inaccuracies with `file://` behavior from Electron. For example:
 
