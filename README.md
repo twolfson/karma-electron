@@ -21,7 +21,7 @@ This was written to allow for directly testing in [Electron][] where we might wa
 
 **Notices:**
 
-- This plugin has been tested against `electron@0.37.4` and `electron@1.3.3` but should support the latest version
+- This plugin has been tested against `electron@{0.x,1,5,6,7,8,9,11,12}` and should support the latest version
 - This plugin is best suited for testing the renderer portion of an `electron` application
     - For testing a full application, see `electron's` documentation on Selenium and WebDriver
     - https://github.com/electron/electron/blob/v1.3.6/docs/tutorial/using-selenium-and-webdriver.md
@@ -172,8 +172,10 @@ module.exports = function (config) {
 };
 ```
 
-### Forcing `nodeIntegration` support
-If we're upgrading to Electron@5 or later, then we might run into missing `nodeIntegration` support. While it's advised to use `preload`, here's a workaround until the transition to `preload` is complete
+### Forcing `nodeIntegration` and `contextIsolation` support
+If we're upgrading to Electron@5 or later, then we might run into missing `nodeIntegration` and `contextIsolation` support (e.g. `require is not defined`).
+
+While it's advised to use `preload`, here's a workaround for now:
 
 ```js
 module.exports = function (config) {
@@ -187,7 +189,8 @@ module.exports = function (config) {
         base: 'Electron',
         browserWindowOptions: {
           webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            contextIsolation: false
           }
         }
       }
