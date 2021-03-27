@@ -91,10 +91,10 @@ customLaunchers: {
     browserWindowOptions: {
       // DEV: More preferentially, should link your own `webPreferences` from your Electron app instead
       webPreferences: {
-        // Preferred `preload` version
+        // Preferred `preload` mechanism to expose `require`
         preload: __dirname + '/path/to/preload.js'
 
-        // Alternative non-preload version
+        // Alternative non-preload mechanism to expose `require`
         // nodeIntegration: true,
         // contextIsolation: false
 
