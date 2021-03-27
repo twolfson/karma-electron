@@ -44,18 +44,17 @@ On a project that has been set up with `karma init` already, install the module 
 npm install karma-electron electron
 ```
 
-Then, configure the module:
+Then, configure the module in one of the following fashions:
+
+### No Node.js integration
+**Note:** Due to `electron@12` `postMessage` limitations, we will set `BrowserWindow#webPreferences.nativeWindowOpen` to `true` (see [#50][] for more info)
+
+[#50]: https://github.com/twolfson/karma-electron/issues/50
 
 ```js
 // Inside `karma.conf.js`
 browsers: ['Electron']
 
-// If you would like Node.js integration support (e.g. `require`)
-//   then, you must include this in `preprocessors` and `client`
-// DEV: preprocessors is for backfilling `__filename` and local `require` paths
-preprocessors: {
-  '**/*.js': ['electron']
-},
 // DEV: `useIframe: false` is for launching a new window instead of using an iframe
 //   In Electron, iframes don't get `nodeIntegration` priveleges yet windows do
 client: {
