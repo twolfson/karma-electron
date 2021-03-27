@@ -51,7 +51,7 @@ On a project that has been set up with `karma init` already, install the module 
 npm install karma-electron electron
 ```
 
-Then, configure the module in one of the following fashions:
+Then, configure the module with the following:
 
 ### No Node.js integration
 **Note:** Due to `electron@12` `postMessage` limitations, we set `BrowserWindow#webPreferences.nativeWindowOpen` to `true` by default (see [#50][] for more info)
@@ -75,7 +75,7 @@ Then, we can run Karma:
 karma start
 ```
 
-### Node.js integration
+### Node.js/custom integration
 By default, we try to use the minimal Electron configuration to avoid any assumptions about your repo
 
 As a result, we need to define a custom launcher to match your Electron configuration
@@ -89,9 +89,15 @@ customLaunchers: {
   CustomElectron: {
     base: 'Electron',
     browserWindowOptions: {
+      // DEV: More preferentially, should link your own `webPreferences` from your Electron app instead
       webPreferences: {
-        nodeIntegration: true,
-        contextIsolation: false
+        // Preferred `preload` version
+        preload: __dirname + '/path/to/preload.js'
+
+        // Alternative non-preload version
+        // nodeIntegration: true,
+        // contextIsolation: false
+
         // nativeWindowOpen is set to `true` by default by `karma-electron` as well, see #50
       }
     }
@@ -111,6 +117,12 @@ preprocessors: {
 client: {
   useIframe: false
 }
+```
+
+Then, we can run Karma:
+
+```bash
+karma start
 ```
 
 ## Documentation
@@ -185,62 +197,9 @@ module.exports = function (config) {
         userDataDir: __dirname + '/.electron',
         browserWindowOptions: {
           show: true
+          // nativeWindowOpen is set to `true` by default by `karma-electron` as well, see #50
         },
         require: __dirname + '/main-fixtures.js'
-      }
-    }
-  });
-};
-```
-
-## Examples
-### Using `preload` with `BrowserWindow`
-We can add our `preload` location via a custom launcher:
-
-```js
-// Inside `karma.conf.js`
-module.exports = function (config) {
-  config.set({
-    // Specify usage of our custom launcher
-    browsers: ['CustomElectron'],
-
-    // Define a custom launcher which inherits from `Electron`
-    customLaunchers: {
-      CustomElectron: {
-        base: 'Electron',
-        browserWindowOptions: {
-          webPreferences: {
-            preload: __dirname + '/path/to/preload.js'
-          }
-        }
-      }
-    }
-  });
-};
-```
-
-### Forcing `nodeIntegration` and `contextIsolation` support
-If we're upgrading to Electron@5 or later, then we might run into missing `nodeIntegration` and `contextIsolation` support (e.g. `require is not defined`).
-
-While it's advised to use `preload`, here's a workaround for now:
-
-```js
-// Inside `karma.conf.js`
-module.exports = function (config) {
-  config.set({
-    // Specify usage of our custom launcher
-    browsers: ['CustomElectron'],
-
-    // Define a custom launcher which inherits from `Electron`
-    customLaunchers: {
-      CustomElectron: {
-        base: 'Electron',
-        browserWindowOptions: {
-          webPreferences: {
-            nodeIntegration: true,
-            contextIsolation: false
-          }
-        }
       }
     }
   });
