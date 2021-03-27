@@ -90,7 +90,7 @@ module.exports = function (config) {
         browserWindowOptions: {
           webPreferences: {
             nodeIntegration: true,
-            contextIsolation: false,
+            contextIsolation: false
           }
         }
       },
@@ -99,7 +99,7 @@ module.exports = function (config) {
         browserWindowOptions: {
           webPreferences: {
             nodeIntegration: true,
-            contextIsolation: false,
+            contextIsolation: false
           }
         },
         require: __dirname + '/test-files/main-require.js'
@@ -110,7 +110,7 @@ module.exports = function (config) {
           show: true,
           webPreferences: {
             nodeIntegration: true,
-            contextIsolation: false,
+            contextIsolation: false
           }
         }
       }
