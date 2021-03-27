@@ -89,7 +89,8 @@ module.exports = function (config) {
         base: 'Electron',
         browserWindowOptions: {
           webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            contextIsolation: false,
           }
         }
       },
@@ -97,7 +98,8 @@ module.exports = function (config) {
         base: 'Electron',
         browserWindowOptions: {
           webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            contextIsolation: false,
           }
         },
         require: __dirname + '/test-files/main-require.js'
@@ -107,7 +109,8 @@ module.exports = function (config) {
         browserWindowOptions: {
           show: true,
           webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            contextIsolation: false,
           }
         }
       }
