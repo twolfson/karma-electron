@@ -54,7 +54,7 @@ npm install karma-electron electron
 Then, configure the module in one of the following fashions:
 
 ### No Node.js integration
-**Note:** Due to `electron@12` `postMessage` limitations, we will set `BrowserWindow#webPreferences.nativeWindowOpen` to `true` (see [#50][] for more info)
+**Note:** Due to `electron@12` `postMessage` limitations, we set `BrowserWindow#webPreferences.nativeWindowOpen` to `true` by default (see [#50][] for more info)
 
 [#50]: https://github.com/twolfson/karma-electron/issues/50
 
