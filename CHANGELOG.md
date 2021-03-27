@@ -1,4 +1,6 @@
 # karma-electron changelog
+7.0.0 - Added `BrowserWindow#webPreferences.nativeWindowOpen: true` as default for Electron@12 non-Node.js support (more #50)
+
 6.3.4 - Upgraded to Electron@12 in `devDependencies` and documented `contextIsolation` for #50
 
 6.3.3 - Adjusted Travis CI Node.js versions
