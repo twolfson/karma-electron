@@ -94,6 +94,7 @@ We support the following configurations:
 **Example:**
 
 ```js
+// Inside `karma.conf.js`
 module.exports = function (config) {
   config.set({
     client: {
@@ -127,6 +128,7 @@ We support configuration via Karma's custom launcher inheritance:
 **Example:**
 
 ```js
+// Inside `karma.conf.js`
 module.exports = function (config) {
   config.set({
     // Specify usage of our custom launcher
@@ -152,6 +154,7 @@ module.exports = function (config) {
 We can add our `preload` location via a custom launcher:
 
 ```js
+// Inside `karma.conf.js`
 module.exports = function (config) {
   config.set({
     // Specify usage of our custom launcher
@@ -178,6 +181,7 @@ If we're upgrading to Electron@5 or later, then we might run into missing `nodeI
 While it's advised to use `preload`, here's a workaround for now:
 
 ```js
+// Inside `karma.conf.js`
 module.exports = function (config) {
   config.set({
     // Specify usage of our custom launcher
