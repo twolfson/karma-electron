@@ -75,6 +75,44 @@ Then, we can run Karma:
 karma start
 ```
 
+### Node.js integration
+By default, we try to use the minimal Electron configuration to avoid any assumptions about your repo
+
+As a result, we need to define a custom launcher to match your Electron configuration
+
+To add Node.js integration support (e.g. `require`), use the following:
+
+```js
+// Inside `karma.conf.js`
+// Define our custom launcher for Node.js support
+customLaunchers: {
+  CustomElectron: {
+    base: 'Electron',
+    browserWindowOptions: {
+      webPreferences: {
+        nodeIntegration: true,
+        contextIsolation: false
+        // nativeWindowOpen is set to `true` by default by `karma-electron` as well, see #50
+      }
+    }
+  }
+}
+
+// Use our custom launcher
+browsers: ['CustomElectron']
+
+// DEV: preprocessors is for backfilling `__filename` and local `require` paths
+preprocessors: {
+  '**/*.js': ['electron']
+},
+
+// DEV: `useIframe: false` is for launching a new window instead of using an iframe
+//   In Electron, iframes don't get `nodeIntegration` priveleges yet windows do
+client: {
+  useIframe: false
+}
+```
+
 ## Documentation
 ### Environment variables
 - ELECTRON_BIN - Override path to use for `electron`
