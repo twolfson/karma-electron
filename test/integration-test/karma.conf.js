@@ -107,7 +107,7 @@ module.exports = function (config) {
       VisibleElectron: {
         base: 'Electron',
         browserWindowOptions: {
-          show: true,
+          show: false,
           webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
