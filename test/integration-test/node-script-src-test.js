@@ -29,6 +29,7 @@ describe('module for `<script src=` based Node.js integrations', function () {
       assert.strictEqual(typeof module.exports, 'object');
       assert.strictEqual(module.id, 'electron/js2c/renderer_init');
       assert.strictEqual(submodule.loaded, true);
+      // DEV: While iterating on #54, we noticed Electron@15 changed from `module.parent` to `module.__proto__.parent`
       assert.strictEqual(module.hasOwnProperty('parent'), true);
       assert.strictEqual(module.parent, undefined);
     });
