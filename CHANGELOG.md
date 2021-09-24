@@ -1,4 +1,6 @@
 # karma-electron changelog
+7.1.0 - Added `setWindowOpenHandler` to fix `show` not persisting across `window.open`. Fixes #54
+
 7.0.0 - Added `BrowserWindow#webPreferences.nativeWindowOpen: true` as default for Electron@12 non-Node.js support (more #50)
 
 6.3.4 - Upgraded to Electron@12 in `devDependencies` and documented `contextIsolation` for #50
