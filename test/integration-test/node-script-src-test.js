@@ -29,8 +29,8 @@ describe('module for `<script src=` based Node.js integrations', function () {
       assert.strictEqual(typeof module.exports, 'object');
       assert.strictEqual(module.id, 'electron/js2c/renderer_init');
       assert.strictEqual(submodule.loaded, true);
-      assert.strictEqual(module.hasOwnProperty('parent'), true);
-      assert.strictEqual(module.parent, undefined);
+      assert.strictEqual(module.__proto__.hasOwnProperty('parent'), true);
+      // assert.strictEqual(module.parent, undefined);
     });
   });
 
