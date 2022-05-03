@@ -44,7 +44,7 @@
     "test-windows": "npm run test-karma-all"
   },
   "dependencies": {
-    "async": "~3.0.1",
+    "async": "~3.2.2",
     "combine-source-map": "~0.8.0",
     "commander": "~2.9.0",
     "convert-source-map": "~1.2.0",
