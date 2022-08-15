@@ -21,8 +21,7 @@ This was written to allow for directly testing in [Electron][] where we might wa
 
 **Notices:**
 
-- This plugin has been tested against `electron@{0.x,1,5,6,7,8,9,11,12}` and should support the latest version
-  - For `electron@0.x` to `electron@14`, please use `karma-electron@7` or earlier
+- This plugin has been tested against `electron@{0.x,1,5,6,7,8,9,11,12,14,15,20}` and should support the latest version
 - This plugin is best suited for testing the renderer portion of an `electron` application
     - For testing a full application, see `electron's` documentation on Selenium and WebDriver
     - https://github.com/electron/electron/blob/v1.3.6/docs/tutorial/using-selenium-and-webdriver.md
