@@ -31,8 +31,9 @@ describe('module for `<script src=` based Node.js integrations', function () {
       assert.strictEqual(submodule.loaded, true);
       // DEV: While iterating on #54, we noticed Electron@15 changed from `module.parent` to `module.__proto__.parent`
       //   This is caused by Node.js@16 upgrade which changed behavior, https://github.com/electron/electron/releases/tag/v15.0.0
+      // DEV: `Object.getPrototypeOf` is the more formal call for `__proto__`
       assert.strictEqual(module.hasOwnProperty('parent'), false);
-      assert.strictEqual(module.__proto__.hasOwnProperty('parent'), true);
+      assert.strictEqual(Object.getPrototypeOf(module).hasOwnProperty('parent'), true);
       assert.strictEqual(module.parent, undefined);
     });
   });
