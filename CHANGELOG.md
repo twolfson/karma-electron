@@ -1,4 +1,6 @@
 # karma-electron changelog
+7.3.0 - Upgraded to Electron@20 in `devDependencies` to sanity check for #57
+
 7.2.0 - Upgraded to async@3.2.2 via @fs-eire in #56
 
 7.1.0 - Added `setWindowOpenHandler` to fix `show` not persisting across `window.open`. Fixes #54
