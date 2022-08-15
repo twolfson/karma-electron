@@ -30,7 +30,9 @@ describe('module for `<script src=` based Node.js integrations', function () {
       assert.strictEqual(module.id, 'electron/js2c/renderer_init');
       assert.strictEqual(submodule.loaded, true);
       // DEV: While iterating on #54, we noticed Electron@15 changed from `module.parent` to `module.__proto__.parent`
-      assert.strictEqual(module.hasOwnProperty('parent'), true);
+      //   This is caused by Node.js@16 upgrade which changed behavior, https://github.com/electron/electron/releases/tag/v15.0.0
+      assert.strictEqual(module.hasOwnProperty('parent'), false);
+      assert.strictEqual(module.__proto__.hasOwnProperty('parent'), true);
       assert.strictEqual(module.parent, undefined);
     });
   });
