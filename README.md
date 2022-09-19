@@ -124,7 +124,14 @@ Then, we can run Karma:
 ```bash
 karma start
 ```
-
+### using with `ng test`
+normally Karma auto loads plugins. However angular cli requires Karma to add plugins to karma.conf.js
+```js
+// Inside `karma.conf.js`
+plugins: [
+    require("karma-electron"),
+],
+```
 ## Documentation
 ### Environment variables
 - ELECTRON_BIN - Override path to use for `electron`
@@ -205,6 +212,7 @@ module.exports = function (config) {
   });
 };
 ```
+
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via `npm run lint` and test via `npm test`.
