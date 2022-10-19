@@ -53,6 +53,7 @@
     "xtend": "~4.0.1"
   },
   "devDependencies": {
+    "@electron/remote": "^2.0.8",
     "collections": "~3.0.0",
     "cross-env": "~1.0.7",
     "electron": "~20.0.2",
